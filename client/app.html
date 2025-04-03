@@ -77,10 +77,17 @@
           >
         </div>
 
-        <label for="uiLocations">Location</label>
-        <select id="uiLocations">
-          <option value="" disabled selected>Choose a Location</option>
-        </select>
+        <label for="locationInput">Location</label>
+        <div class="autocomplete-container">
+          <input
+            type="text"
+            id="locationInput"
+            placeholder="Type a location"
+            autocomplete="off"
+          />
+          <input type="hidden" id="locationValue" />
+          <div id="locationDropdown" class="autocomplete-dropdown"></div>
+        </div>
 
         <button
           type="button"
