@@ -26,7 +26,7 @@ def get_estimated_price(location, total_sqft, bhk, bath):
     if loc_index >= 0:
         x[loc_index] = 1
 
-    __model.feature_names_in_ = None    
+    __model.feature_names_in_ = None
 
     return round(__model.predict([x])[0], 2)
 
@@ -38,7 +38,7 @@ def load_saved_data():
     global __locations
     global __model
 
-    with open("server\Columns Data\columns.json", "r") as f:
+    with open("server\Columns\columns.json", "r") as f:
         __data_columns = json.load(f)["data_columns"]
         __locations = __data_columns[3:]
 
