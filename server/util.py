@@ -1,6 +1,7 @@
 import json
 import pickle
 import numpy as np
+import os
 
 __locations = None
 __data_columns = None
@@ -38,11 +39,15 @@ def load_saved_data():
     global __locations
     global __model
 
-    with open("server\Columns\columns.json", "r") as f:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    columns_file_path = os.path.join(base_dir, "Columns", "columns.json")
+    model_file_path = os.path.join(base_dir, "Model", "property_price_prediction_model.pickle")
+
+    with open(columns_file_path, "r") as f:
         __data_columns = json.load(f)["data_columns"]
         __locations = __data_columns[3:]
 
-    with open("server\Model\property_price_prediction_model.pickle", "rb") as f:
+    with open(model_file_path, "rb") as f:
         __model = pickle.load(f)
 
     print("Loading saved data...done")
