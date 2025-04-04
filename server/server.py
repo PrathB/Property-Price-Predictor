@@ -4,12 +4,11 @@ import util
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route("/get_location_names", methods=["GET"])
 def get_location_names():
     response = jsonify({"locations": util.get_location_names()})
-    response.headers.add("Access-Control-Allow-Origin", "*")
 
     return response
 
@@ -31,7 +30,6 @@ def predict_property_price():
                 )
             }
         )
-        response.headers.add("Access-Control-Allow-Origin", "*")
 
         return response
     except Exception as e:
